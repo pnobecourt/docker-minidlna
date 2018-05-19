@@ -27,7 +27,8 @@ Create container :
                --restart always \
                --name minidlna \
                --hostname minidlna \
-               --net=host \
+               -p 1900:1900/udp
+               -p 8200:8200/tcp
                -v /etc/timezone:/etc/timezone:ro \
                -v /etc/localtime:/etc/localtime:ro \
                -v /etc/passwd:/etc/passwd:ro \
@@ -41,24 +42,24 @@ Create container :
 
 Or with docker-compose :
 
-version: "3.6"
-services:
-    # MiniDLNa - DLNa server
-    minidlna:
-        container_name: minidlna
-        hostname: minidlna
-        image: barbak/minidlna
-        restart: always
-        ports:
-            - "1900:1900/udp"
-            - "8200:8200/tcp"
-        volumes:
-            - /etc/timezone:/etc/timezone:ro
-            - /etc/localtime:/etc/localtime:ro
-            - /path/to/your/minidlna/volume/etc/default/minidlna:/etc/default/minidlna
-            - /path/to/your/minidlna/volume/etc/minidlna/minidlna.conf:/etc/minidlna/minidlna.conf
-            - /path/to/your/minidlna/volume/var:/var
-            - <media-dir>:/your/media/dir:ro \ # you can add multiple media dirs if you want, just add another - <media-dir-n>:/another/media/dir:ro
+    version: "3.6"
+    services:
+        # MiniDLNa - DLNa server
+        minidlna:
+            container_name: minidlna
+            hostname: minidlna
+            image: barbak/minidlna
+            restart: always
+            ports:
+                - "1900:1900/udp"
+                - "8200:8200/tcp"
+            volumes:
+                - /etc/timezone:/etc/timezone:ro
+                - /etc/localtime:/etc/localtime:ro
+                - /path/to/your/minidlna/volume/etc/default/minidlna:/etc/default/minidlna
+                - /path/to/your/minidlna/volume/etc/minidlna/minidlna.conf:/etc/minidlna/minidlna.conf
+                - /path/to/your/minidlna/volume/var:/var
+                - <media-dir>:/your/media/dir:ro \ # you can add multiple media dirs if you want, just add another - <media-dir-n>:/another/media/dir:ro
 
 The web interface runs on port 8200.
 
