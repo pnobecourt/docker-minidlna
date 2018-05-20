@@ -31,13 +31,10 @@ Create container :
                -p 8200:8200/tcp
                -v /etc/timezone:/etc/timezone:ro \
                -v /etc/localtime:/etc/localtime:ro \
-               -v /etc/passwd:/etc/passwd:ro \
-               -v /etc/group:/etc/group:ro \
                -v /path/to/your/minidlna/volume/etc/default/minidlna:/etc/default/minidlna \
                -v /path/to/your/minidlna/volume/etc/minidlna/minidlna.conf:/etc/minidlna/minidlna.conf \
                -v /path/to/your/minidlna/volume/var:/var \
                -v <media-dir>:/your/media/dir:ro \ # you can add multiple media dirs if you want, just add another -v <media-dir-n>:/another/media/dir:ro
-               -u $( id -u <the-user-you-want> ):$( id -g <the-user-you-want> ) \ # or -u $( id -u $USER ):$( id -g $USER ) or -u <the-uid-you-want>:<the-gid-you-want>
                barbak/minidlna
 
 Or with docker-compose :
