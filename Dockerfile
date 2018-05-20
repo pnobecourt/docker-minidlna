@@ -51,9 +51,6 @@ RUN apt-get update && \
            /var/lib/apt/lists/* \
            /var/tmp/*
 
-# Volumes
-VOLUME ["/etc/default","/etc/minidlna","/var"]
-    
 # Ports configuration
 EXPOSE 1900/udp 8200
 
