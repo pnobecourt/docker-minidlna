@@ -20,6 +20,8 @@ LABEL org.label-schema.name="MiniDLNa" \
 # Define the ENV variable for creating docker image
 ENV LANG C.UTF-8
 ENV DEBIAN_FRONTEND noninteractive
+ENV SHELL=/bin/bash
+ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 # Install additional repositories
 RUN echo "deb http://www.deb-multimedia.org stretch main non-free" | tee -a /etc/apt/sources.list.d/debian-multimedia.list && \
