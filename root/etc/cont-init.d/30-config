@@ -1,0 +1,21 @@
+#!/usr/bin/with-contenv bash
+
+# Check if minidlna conf folder exist, else create them
+if [ -d "$MINIDLNA_VOL/conf" ];then
+    echo "Le dossier $MINIDLNA_VOL/conf existe déjà";
+else
+    echo "$MINIDLNA_VOL/conf n'existe pas encore, création"
+    mkdir -p $MINIDLNA_VOL/conf
+fi
+
+# Check if minidlna config files exists, else copy default ones
+if [ -f "$MINIDLNA_VOL/conf/minidlna.conf" ];then
+    echo "Le fichier $MINIDLNA_VOL/conf/minidlna.conf existe déjà";
+else
+    echo "Le fichier $MINIDLNA_VOL/conf/minidlna.conf n'existe pas, copie du fichier par défaut"
+    cp /etc/minidlna.conf $MINIDLNA_VOL/conf/minidlna.conf
+fi
+
+
+# Fix permissions
+chown -R dockeruser:dockeruser $MINIDLNA_VOL
