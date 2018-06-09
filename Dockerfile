@@ -1,7 +1,7 @@
 # Download base image
 FROM barbak/alpine-s6:latest
 
-# Define the ARG variables for creating docker image
+# Define the ARG variables
 ARG VERSION
 ARG BUILD_DATE
 ARG VCS_REF
@@ -17,10 +17,10 @@ LABEL org.label-schema.name="MiniDLNa" \
       org.label-schema.vcs-ref=$VCS_REF \
       org.label-schema.schema-version="1.0"
 
-# Define the ENV variable for creating docker image
+# Define the ENV variables
 ENV MINIDLNA_VOL=/srv/apps/minidlna
 
-# Install S6Overlay
+# Install MiniDLNA
 RUN apk update && \
     apk add --no-cache minidlna
 
