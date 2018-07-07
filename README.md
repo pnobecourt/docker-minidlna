@@ -1,6 +1,6 @@
 # minidlna
 
-This is a Debian-based MiniDLNa Docker image.
+This is an Alpine based MiniDLNa Docker image.
 
 Create workdirs :
 
@@ -35,6 +35,8 @@ Create container :
                -v /path/to/your/minidlna/volume/etc/minidlna/minidlna.conf:/etc/minidlna/minidlna.conf \
                -v /path/to/your/minidlna/volume/var:/var \
                -v <media-dir>:/your/media/dir:ro \ # you can add multiple media dirs if you want, just add another -v <media-dir-n>:/another/media/dir:ro
+               -e "PUID=<your-uid>"
+               -e "PGID=<your-gid>"
                barbak/minidlna
 
 Or with docker-compose :
@@ -57,6 +59,9 @@ Or with docker-compose :
                 - /path/to/your/minidlna/volume/etc/minidlna/minidlna.conf:/etc/minidlna/minidlna.conf
                 - /path/to/your/minidlna/volume/var:/var
                 - <media-dir>:/your/media/dir:ro \ # you can add multiple media dirs if you want, just add another - <media-dir-n>:/another/media/dir:ro
+            environment:
+                - PUID=<your-uid>
+                - PGID=<your-gid>
 
 The web interface runs on port 8200.
 
